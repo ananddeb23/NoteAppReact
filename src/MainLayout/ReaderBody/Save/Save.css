@@ -1,0 +1,10 @@
+.Save{
+    display: flex;
+    flex-direction: row;
+     margin-right: 15px;
+     margin-left: 15px;
+     margin-top: 2%;
+     margin-bottom: 2%;
+    justify-content: space-between;
+    align-items: stretch;
+}

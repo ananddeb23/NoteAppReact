@@ -1,0 +1,8 @@
+.BodyLayout{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #E9E9EF;
+}

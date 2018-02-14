@@ -1,0 +1,14 @@
+.NoteBody{
+    display: flex;
+    flex-direction: row;
+     margin-right: 15px;
+     margin-left: 15px;
+     margin-top: 15px;
+   height: 50%;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.Text{
+    flex-grow: 1;
+    font-size: 20px;
+}
