@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import './Footer.css';
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="FooterLayout" >
-        <center> About Us </center>
+        <center> {this.props.footertext} </center>
       </div>
     );
   }

@@ -8,3 +8,7 @@
     justify-content: space-between;
     align-items: stretch;
 }
+.actiontype{
+    color: black;
+    text-decoration: none;
+}

@@ -12,3 +12,15 @@
     flex-grow: 1;
     font-size: 20px;
 }
+.red{
+     flex-grow: 1;
+    font-size: 20px;
+     border : 1px solid red;
+     color : red;
+}
+.black{
+     flex-grow: 1;
+    font-size: 20px;
+     border : 1px solid black;
+     color : black;
+}

@@ -9,9 +9,9 @@ class MainLayout extends Component {
   render() {
     return (
       <div className="OuterLayout" >
-        <Header />
-        <ReaderBody />
-        <Footer />
+        <Header headertext="Start taking notes" />
+        <ReaderBody allowedcharlimit={10} />
+        <Footer footertext="About Us" />
       </div>
     );
   }
