@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './ActionInfoBar.css';
 
-import './Actioninfobar.css';
 
-
-class Actioninfobar extends Component {
+class ActionInfoBar extends Component {
   render() {
     return (
       <div className="Save" >
@@ -15,4 +15,15 @@ class Actioninfobar extends Component {
   }
 }
 
-export default Actioninfobar;
+ActionInfoBar.propTypes = {
+  actionmethod: PropTypes.func,
+  actiontype: PropTypes.func,
+  charactersleft: PropTypes.number,
+
+};
+ActionInfoBar.defaultProps = {
+  actionmethod: '',
+  actiontype: '',
+  charactersleft: 0,
+};
+export default ActionInfoBar;

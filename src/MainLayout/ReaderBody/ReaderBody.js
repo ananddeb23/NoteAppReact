@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import './ReaderBody.css';
-import Notestitlebar from './Notestitlebar/Notestitlebar';
+import NotesTitleBar from './NotesTitleBar/NotesTitleBar';
 import Tasks from './Tasks/Tasks';
-import Userinstruction from './Userinstruction/Userinstruction';
-import Notearea from './Notearea/Notearea';
-import Actioninfobar from './Actioninfobar/Actioninfobar';
+import UserInstruction from './UserInstruction/UserInstruction';
+import NoteArea from './NoteArea/NoteArea';
+import ActionInfoBar from './ActionInfoBar/ActionInfoBar';
 
 class ReaderBody extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class ReaderBody extends Component {
       currenttext: '',
       currenttitle: '',
       textareaclass: 'black',
+      savewasclicked: 'no',
     };
     this.charactercounter = this.charactercounter.bind(this);
     this.updatetitlecontent = this.updatetitlecontent.bind(this);
@@ -46,28 +47,43 @@ class ReaderBody extends Component {
     this.setState({ charactercount: charactercountnew, charactersleft: charactersleftnew });
   }
   updatenotes() {
-    console.log(this.state.notes);
+    // console.log(this.state.notes);
+
     const obj = {
       title: this.state.currenttitle,
       note: this.state.currenttext,
     };
     const notesnew = this.state.notes.slice();
     notesnew.push(obj);
-    this.setState({ notes: notesnew });
-    this.setState({ currenttext: '' });
-    this.setState({ currenttitle: '' });
+    this.setState({
+      notes: notesnew, currenttext: '', currenttitle: '', savewasclicked: 'yes',
+    });
   }
   render() {
+    if (this.state.savewasclicked === 'yes') {
+      this.props.sendBackNotes(this.state.notes);
+    }
+    console.log(this.state.notes);
     return (
       <div className="BodyLayout" >
-        <Notestitlebar notetitle="Note Title" buttontext="En" />
+        <NotesTitleBar notetitle="Note Title" buttontext="En" />
         <Tasks tasksplaceholder="Tasks for today" notetitle={this.state.currenttitle} titlemethod={this.updatetitlecontent} />
-        <Userinstruction informationtext="Please type your note below" informationicon="fas fa-align-center" />
-        <Notearea noteplaceholder="Notes" textareastyle={this.state.textareaclass} limit={this.state.charactersallowed} charactershandler={this.charactercounter} notetext={this.state.currenttext} handletextlength={this.handletextlength} />
-        <Actioninfobar actiontype="Save" charactercount={this.state.charactercount} charactersleft={this.state.charactersleft} actionmethod={this.updatenotes} />
+        <UserInstruction informationtext="Please type your note below" informationicon="fas fa-align-center" />
+        <NoteArea noteplaceholder="Notes" textareastyle={this.state.textareaclass} limit={this.state.charactersallowed} charactershandler={this.charactercounter} notetext={this.state.currenttext} handletextlength={this.handletextlength} />
+        <ActionInfoBar actiontype="Save" charactercount={this.state.charactercount} charactersleft={this.state.charactersleft} actionmethod={this.updatenotes} />
       </div>
     );
   }
 }
 
+
+ReaderBody.propTypes = {
+  sendBackNotes: PropTypes.func,
+
+
+};
+ReaderBody.defaultProps = {
+  sendBackNotes: '',
+
+};
 export default ReaderBody;

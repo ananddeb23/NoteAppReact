@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Notearea.css';
+import './NoteArea.css';
 
 
-class Notearea extends Component {
-  constructor(props) {
-    super(props);
-  }
+class NoteArea extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
 
 
   render() {
@@ -24,14 +24,14 @@ class Notearea extends Component {
   }
 }
 
-Notearea.propTypes = {
+NoteArea.propTypes = {
   limit: PropTypes.number,
   noteplaceholder: PropTypes.string,
   textareastyle: PropTypes.string,
   charactershandler: PropTypes.string,
   notetext: PropTypes.string,
 };
-Notearea.defaultProps = {
+NoteArea.defaultProps = {
   limit: 120,
   noteplaceholder: 'Notes',
   textareastyle: 'black',
@@ -39,4 +39,4 @@ Notearea.defaultProps = {
   notetext: '',
 };
 
-export default Notearea;
+export default NoteArea;

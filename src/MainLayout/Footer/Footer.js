@@ -8,8 +8,9 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div className="FooterLayout" >
+      <div className="FooterLayout" onClick={this.props.clickaction}>
         <center> {this.props.footertext} </center>
+
       </div>
     );
   }

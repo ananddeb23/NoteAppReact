@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import './Tasks.css';
 
 
-class Title extends Component {
+class Tasks extends Component {
   render() {
     return (
       <div className="Tasks" >
@@ -13,4 +13,17 @@ class Title extends Component {
   }
 }
 
-export default Title;
+Tasks.propTypes = {
+  tasksplaceholder: PropTypes.string,
+  titlemethod: PropTypes.func,
+  notetitle: PropTypes.string,
+
+
+};
+Tasks.defaultProps = {
+  tasksplaceholder: '',
+  titlemethod: '',
+  notetitle: '',
+};
+
+export default Tasks;

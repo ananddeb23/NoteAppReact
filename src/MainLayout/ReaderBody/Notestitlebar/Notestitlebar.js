@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './NotesTitleBar.css';
 
-import './Notestitlebar.css';
 
-
-class Notestitlebar extends Component {
+class NotesTitleBar extends Component {
   render() {
     return (
       <div className="Title" >
@@ -13,5 +13,14 @@ class Notestitlebar extends Component {
     );
   }
 }
+NotesTitleBar.propTypes = {
+  notetitle: PropTypes.string,
+  buttontext: PropTypes.string,
 
-export default Notestitlebar;
+};
+NotesTitleBar.defaultProps = {
+  notetitle: '',
+  buttontext: '',
+};
+
+export default NotesTitleBar;

@@ -1,0 +1,18 @@
+.ContentCase-outer{
+     display: block;
+    overflow-y: auto;
+}
+
+.ContentCase-title{
+  color: black;
+  margin-left: 10px;
+  margin-bottom: -30px;
+}
+.ContentCase-body{
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  background-color: white;
+
+}

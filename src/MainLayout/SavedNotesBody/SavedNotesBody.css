@@ -1,0 +1,8 @@
+.SavedNotesBody-structure{
+    background: #E9E9EF;
+    
+    height: 80vh;
+    
+    align-items: stretch;
+    overflow-y: auto;
+}

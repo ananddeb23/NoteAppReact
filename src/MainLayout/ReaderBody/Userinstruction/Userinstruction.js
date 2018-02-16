@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './UserInstruction.css';
 
-import './Userinstruction.css';
 
-
-class Userinstruction extends Component {
+class UserInstruction extends Component {
   render() {
     return (
       <div className="Information" >
@@ -14,4 +14,15 @@ class Userinstruction extends Component {
   }
 }
 
-export default Userinstruction;
+UserInstruction.propTypes = {
+  informationicon: PropTypes.string,
+  informationtext: PropTypes.string,
+
+
+};
+UserInstruction.defaultProps = {
+  informationicon: '',
+  informationtext: '',
+};
+
+export default UserInstruction;
