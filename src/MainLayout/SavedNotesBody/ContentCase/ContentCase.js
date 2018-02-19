@@ -17,7 +17,12 @@ class ContentCase extends Component {
         <div>  <h3 className="ContentCase-title"> {this.props.contentToDisplay.title} </h3></div>
         <br />
         <br />
-        <p className="ContentCase-body">  {this.props.contentToDisplay.note} </p>
+        <div
+          className="ContentCase-body"
+          onClick={() => { this.props.triggerEdit(this.props.contentToDisplay.notesid, this.props.contentToDisplay.note, this.props.contentToDisplay.title); }}
+
+        >  {this.props.contentToDisplay.note}
+        </div>
 
       </div>
 
@@ -31,8 +36,6 @@ ContentCase.propTypes = {
     title: PropTypes.string,
     note: PropTypes.string,
   })).isRequired,
-
-
 };
 // ContentCase.defaultProps = {
 //   contentToDisplay: [],

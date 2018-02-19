@@ -15,8 +15,8 @@ class SavedNotesBody extends Component {
 
 
     for (let i = 0; i < this.props.notes.length; i += 1) {
-      // console.log('props', this.props.notes);
-      const frame1 = <ContentCase contentToDisplay={this.props.notes[i]} key={i} />;
+      console.log('props', this.props.notes[i].notesid);
+      const frame1 = <ContentCase contentToDisplay={this.props.notes[i]} key={this.props.notes[i].notesid} triggerEdit={this.props.triggerEdit} />;
       // console.log(this.props.notes[i].title, this.props.notes[i].note);
       displaynotes.push(frame1);
     }

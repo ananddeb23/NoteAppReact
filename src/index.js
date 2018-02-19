@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MainLayout from './MainLayout/MainLayout';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-ReactDOM.render(<MainLayout />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(<Provider store={store}><MainLayout /></Provider>, document.getElementById('root'));
+
