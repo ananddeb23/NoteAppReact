@@ -6,6 +6,8 @@ import Tasks from './Tasks/Tasks';
 import UserInstruction from './UserInstruction/UserInstruction';
 import NoteArea from './NoteArea/NoteArea';
 import ActionInfoBar from './ActionInfoBar/ActionInfoBar';
+import { connect } from 'react-redux';
+import { saveNote } from '../../redux/actions';
 
 class ReaderBody extends Component {
   constructor(props) {
@@ -17,10 +19,9 @@ class ReaderBody extends Component {
     charactersleft: this.props.allowedcharlimit,
     charactersallowed: this.props.allowedcharlimit,
     notes: {},
-    currenttext: this.props.noteText,
-    currenttitle: this.props.noteTitle,
+    currenttext: this.props.noteText, // can pass it directly to required components too
+    currenttitle: this.props.noteTitle, // can pass it directly to required components too
     textareaclass: 'black',
-    savewasclicked: 'no',
     notescounter: this.props.notescount,
   };
   updatetitlecontent = (evt) => {
@@ -45,7 +46,6 @@ class ReaderBody extends Component {
     this.setState({ charactercount: charactercountnew, charactersleft: charactersleftnew });
   }
   updatenotes= () => {
-    // console.log(this.state.notes);
     let newnotescount = this.state.notescounter;
     newnotescount += 1;
     const obj = {
@@ -58,13 +58,10 @@ class ReaderBody extends Component {
     this.setState({
       notes: notesnew, currenttext: '', currenttitle: '', savewasclicked: 'yes', notescounter: newnotescount,
     }, () => {
-      console.log(this.state);
+      this.props.saveNote(this.state.notes);
     });
   }
   render() {
-    if (this.state.savewasclicked === 'yes') {
-      this.props.sendBackNotes(this.state.notes);
-    }
     return (
       <div className="BodyLayout" >
         <NotesTitleBar notetitle="Note Title" buttontext="En" />
@@ -77,7 +74,6 @@ class ReaderBody extends Component {
           charactershandler={this.charactercounter}
           notetext={this.state.currenttext}
           handletextlength={this.handletextlength}
-
         />
         <ActionInfoBar actiontype="Save" charactercount={this.state.charactercount} charactersleft={this.state.charactersleft} actionmethod={this.updatenotes} />
       </div>
@@ -87,16 +83,22 @@ class ReaderBody extends Component {
 
 
 ReaderBody.propTypes = {
-  sendBackNotes: PropTypes.func,
   noteText: PropTypes.string.isRequired,
   noteTitle: PropTypes.string.isRequired,
-  allowedcharlimit: PropTypes.string.isRequired,
-  notescount: PropTypes.string.isRequired,
+  allowedcharlimit: PropTypes.number.isRequired,
+  notescount: PropTypes.number.isRequired,
 
 
 };
-ReaderBody.defaultProps = {
-  sendBackNotes: '',
 
-};
-export default ReaderBody;
+const mapDispatchToProps = dispatch => ({
+  saveNote: payload => dispatch(saveNote(payload)),
+
+});
+
+const mapStateToProps = state => ({
+  noteText: state.notes.defText,
+  noteTitle: state.notes.defTitle,
+  notescount: state.notes.notescount,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ReaderBody);

@@ -17,7 +17,7 @@ class ActionInfoBar extends Component {
 
 ActionInfoBar.propTypes = {
   actionmethod: PropTypes.func,
-  actiontype: PropTypes.func,
+  actiontype: PropTypes.string,
   charactersleft: PropTypes.number,
 
 };

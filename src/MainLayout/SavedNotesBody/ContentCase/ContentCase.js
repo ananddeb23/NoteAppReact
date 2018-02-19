@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContentCase.css';
-
+import { editNote } from '../../../redux/actions';
+import { connect } from 'react-redux';
 
 class ContentCase extends Component {
 //   constructor(props) {
@@ -19,7 +20,7 @@ class ContentCase extends Component {
         <br />
         <div
           className="ContentCase-body"
-          onClick={() => { this.props.triggerEdit(this.props.contentToDisplay.notesid, this.props.contentToDisplay.note, this.props.contentToDisplay.title); }}
+          onClick={() => { this.props.editNote(this.props.contentToDisplay.notesid, this.props.contentToDisplay.note, this.props.contentToDisplay.title); }}
 
         >  {this.props.contentToDisplay.note}
         </div>
@@ -41,4 +42,15 @@ ContentCase.propTypes = {
 //   contentToDisplay: [],
 
 // };
-export default ContentCase;
+const mapDispatchToState = dispatch => ({
+  editNote: (noteid, note, notetitle) => {
+    const obj = {
+      noteid,
+      notetext: note,
+      notetitle,
+    };
+    dispatch(editNote(obj));
+  },
+
+});
+export default connect(null, mapDispatchToState)(ContentCase);

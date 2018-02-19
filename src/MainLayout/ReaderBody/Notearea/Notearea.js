@@ -28,7 +28,7 @@ NoteArea.propTypes = {
   limit: PropTypes.number,
   noteplaceholder: PropTypes.string,
   textareastyle: PropTypes.string,
-  charactershandler: PropTypes.string,
+  charactershandler: PropTypes.func,
   notetext: PropTypes.string,
 };
 NoteArea.defaultProps = {
