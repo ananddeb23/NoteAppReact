@@ -6,7 +6,9 @@ import ReaderBody from './ReaderBody/ReaderBody';
 import Footer from './Footer/Footer';
 import SavedNotesBody from './SavedNotesBody/SavedNotesBody';
 import { connect } from 'react-redux';
+import { getNotes } from '../redux/actions';
 
+const urltoreq = '/getNotes';
 class MainLayout extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,17 @@ class MainLayout extends Component {
     // this.handlenotes = this.handlenotes.bind(this);
     // this.togglePage = this.togglePage.bind(this);
     // this.triggerEdit = this.triggerEdit.bind(this);
+  }
+  componentDidMount() {
+    // this.props.getNotes();
+    fetch(urltoreq)
+      .then((response) => {
+        response.text().then((notes) => {
+          console.log(JSON.parse(notes));
+          const notesparsed = JSON.parse(notes);
+          this.props.getNotes(notesparsed);
+        });
+      });
   }
   // triggerEdit(noteid, notetext, notetitle) {
   //   console.log('noteid', noteid);
@@ -72,4 +85,9 @@ const mapStateToProps = state => ({
   page: state.notes.page,
 
 });
-export default connect(mapStateToProps, null)(MainLayout);
+
+const mapDispatchToProps = dispatch => ({
+  getNotes: notes => dispatch(getNotes(notes)),
+
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);

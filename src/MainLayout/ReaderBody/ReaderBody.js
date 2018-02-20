@@ -24,6 +24,7 @@ class ReaderBody extends Component {
     textareaclass: 'black',
     notescounter: this.props.notescount,
   };
+
   updatetitlecontent = (evt) => {
     const titlenew = evt.target.value;
     this.setState({ currenttitle: titlenew });
@@ -46,7 +47,7 @@ class ReaderBody extends Component {
     this.setState({ charactercount: charactercountnew, charactersleft: charactersleftnew });
   }
   updatenotes= () => {
-    let newnotescount = this.state.notescounter;
+    let newnotescount = this.props.notescount == null ? this.state.notescounter : this.props.notescount;
     newnotescount += 1;
     const obj = {
       title: this.state.currenttitle,
