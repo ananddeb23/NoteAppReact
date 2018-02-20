@@ -5,12 +5,12 @@ import { editNote } from '../../../redux/actions';
 import { connect } from 'react-redux';
 
 class ContentCase extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {s
+  constructor(props) {
+    super(props);
+    this.state = {
 
-//     };s
-//   }
+    };
+  }
   render() {
     return (
       <div className="ContentCase-outer">
@@ -21,7 +21,6 @@ class ContentCase extends Component {
         <div
           className="ContentCase-body"
           onClick={() => { this.props.editNote(this.props.contentToDisplay.notesid, this.props.contentToDisplay.note, this.props.contentToDisplay.title); }}
-
         >  {this.props.contentToDisplay.note}
         </div>
 
@@ -37,6 +36,9 @@ ContentCase.propTypes = {
     title: PropTypes.string,
     note: PropTypes.string,
   })).isRequired,
+  notesid: PropTypes.string.isRequired,
+  note: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 // ContentCase.defaultProps = {
 //   contentToDisplay: [],

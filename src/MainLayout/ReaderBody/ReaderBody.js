@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { saveNote } from '../../redux/actions';
 import './ReaderBody.css';
 import NotesTitleBar from './NotesTitleBar/NotesTitleBar';
 import Tasks from './Tasks/Tasks';
 import UserInstruction from './UserInstruction/UserInstruction';
 import NoteArea from './NoteArea/NoteArea';
 import ActionInfoBar from './ActionInfoBar/ActionInfoBar';
-import { connect } from 'react-redux';
-import { saveNote } from '../../redux/actions';
+
 
 class ReaderBody extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class ReaderBody extends Component {
     // const notesnew = [...this.state.notes, obj];
     const notesnew = obj;
     this.setState({
-      notes: notesnew, currenttext: '', currenttitle: '', savewasclicked: 'yes', notescounter: newnotescount,
+      notes: notesnew, currenttext: '', currenttitle: '', notescounter: newnotescount,
     }, () => {
       this.props.saveNote(this.state.notes);
     });
@@ -102,4 +103,12 @@ const mapStateToProps = state => ({
   noteTitle: state.notes.defTitle,
   notescount: state.notes.notescount,
 });
+
+ReaderBody.propTypes = {
+  saveNote: PropTypes.func.isRequired,
+  noteText: PropTypes.string.isRequired,
+  noteTitle: PropTypes.string.isRequired,
+  notescount: PropTypes.string.isRequired,
+
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ReaderBody);

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { togglePage } from '../../redux/actions';
+
 import './Footer.css';
 
 class Footer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+
+    };
   }
   render() {
     return (
@@ -22,4 +27,8 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
+Footer.propTypes = {
+  footertext: PropTypes.string.isRequired,
+  togglePage: PropTypes.func.isRequired,
+};
 export default connect(null, mapDispatchToProps)(Footer);

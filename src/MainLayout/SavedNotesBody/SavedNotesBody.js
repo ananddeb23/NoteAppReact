@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './SavedNotesBody.css';
 import ContentCase from './ContentCase/ContentCase';
-import { connect } from 'react-redux';
+
 
 class SavedNotesBody extends Component {
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { syncAction } from '../../redux/actions';
 import './Header.css';
@@ -6,7 +7,7 @@ import './Header.css';
 const requestUrladdbyId = '/syncNotes';
 class Header extends Component {
   state = {
-    a: 1,
+
   }
    handlesync = () => {
      const payload = this.props.notes;
@@ -20,17 +21,10 @@ class Header extends Component {
          body: JSON.stringify(payload),
        },
      ).then((response) => {
-       // alert(response.data);
        response.text().then((msg) => {
-         // console.log(msg);
-
          alert(msg);
          this.props.syncNotes(msg);
-         // return { ...state, status: msg };
        });
-
-
-       // console.log(text);
      });
    }
    render() {
@@ -53,4 +47,12 @@ const mapStateToProps = state => ({
   status: state.notes.status,
   notes: state.notes.notes,
 });
+
+Header.propTypes = {
+  headertext: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  notes: PropTypes.string.isRequired,
+  syncNotes: PropTypes.func.isRequired,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
