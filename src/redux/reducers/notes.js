@@ -36,29 +36,7 @@ export default (state = defaultState, action) => {
       return { ...state, page: 'addnote' };
     }
     case 'SYNC_ACTION': {
-    //   const payload = state.notes;
-    //   const data = new FormData();
-    //   data.append('payload', JSON.stringify(payload));
-
-    //   fetch(
-    //     requestUrladdbyId,
-    //     {
-    //       method: 'POST',
-    //       body: JSON.stringify(payload),
-    //     },
-    //   ).then((response) => {
-    //     // alert(response.data);
-    //     response.text().then((msg) => {
-    //       // console.log(msg);
-
-    //       alert(msg);
-    //       return { ...state, status: msg };
-    //     });
-
-
-    //     // console.log(text);
-    //   });
-      return { ...state, page: action.payload , status: 'last sync successful' };
+      return { ...state, page: action.payload, status: 'last sync successful' };
     }
     case 'GET_NOTES': {
       console.log(action.payload);

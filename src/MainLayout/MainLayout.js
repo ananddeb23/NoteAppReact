@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getNotes } from '../redux/actions';
+
+
 import './MainLayout.css';
-import Header from './Header/Header';
-import ReaderBody from './ReaderBody/ReaderBody';
-import Footer from './Footer/Footer';
-import SavedNotesBody from './SavedNotesBody/SavedNotesBody';
+import AddNote from './AddNote';
+import SavedNotes from './SavedNotes';
 
 
 const urltoreq = '/getNotes';
@@ -31,21 +32,8 @@ class MainLayout extends Component {
       });
   }
   render() {
-    if (this.props.page === 'addnote') {
-      return (
-        <div className="OuterLayout" >
-          <Header headertext="Start taking notes" />
-          <ReaderBody allowedcharlimit={300} />
-          <Footer footertext="About Us" />
-        </div>
-      );
-    }
     return (
-      <div className="Saved Notes" >
-        <Header headertext="Start taking notes" />
-        <SavedNotesBody />
-        <Footer footertext="Create new Note" />
-      </div>
+      <div className="MainLayout" />
     );
   }
 }
@@ -59,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
 
 });
 MainLayout.propTypes = {
-  page: PropTypes.string.isRequired,
+
   getNotes: PropTypes.func.isRequired,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);
+export default (connect(mapStateToProps, mapDispatchToProps)(MainLayout));

@@ -1,0 +1,19 @@
+.MenuOuter{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.MenuButton{
+    background-color: white;
+    border: 1px solid black;
+    width:400px;
+    margin: 10%;
+    height: 400px;
+    text-align: center;
+    align-content: center;
+}
+.Menu{
+    background-color: #E9E9EF;
+    
+}
